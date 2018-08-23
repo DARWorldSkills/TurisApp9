@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.aprendiz.ragp.turisapp9.R;
 import com.aprendiz.ragp.turisapp9.models.Lugares;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -49,7 +50,8 @@ public class MapsHoteles extends FragmentActivity implements OnMapReadyCallback 
             LatLng latLng = new LatLng(lugares.getLatitud(), lugares.getLongitud());
             mMap.addMarker(new MarkerOptions().position(latLng).title(lugares.getNombre()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 16);
+            mMap.animateCamera(cameraUpdate);
         }
     }
 }

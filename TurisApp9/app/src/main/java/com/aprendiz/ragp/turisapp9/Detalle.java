@@ -25,7 +25,7 @@ public class Detalle extends AppCompatActivity {
         btnDetalle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 Intent intent = new Intent(Detalle.this, Todos.class);
                 startActivity(intent);
             }
