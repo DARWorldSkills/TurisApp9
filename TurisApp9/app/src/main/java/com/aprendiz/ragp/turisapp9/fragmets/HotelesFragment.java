@@ -1,14 +1,19 @@
 package com.aprendiz.ragp.turisapp9.fragmets;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +54,42 @@ public class HotelesFragment extends Fragment {
         inputAdaper();
         return view;
     }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+
+        setHasOptionsMenu(true);
+
+
+
+        super.onCreate(savedInstanceState);
+    }
+
+
+    @SuppressLint("ResourceType")
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.cambiar, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_cambiar) {
+
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     //Método para las diferentes formas del recyclerView
     private void inputAdaper() {
         position = getActivity().getWindowManager().getDefaultDisplay().getRotation();
