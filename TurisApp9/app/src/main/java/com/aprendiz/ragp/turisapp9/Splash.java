@@ -22,7 +22,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Splash extends AppCompatActivity {
-    List<Lugares> lugaresList = new ArrayList<>();
+    public static List<Lugares> lugaresList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
