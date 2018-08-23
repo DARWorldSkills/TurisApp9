@@ -42,7 +42,16 @@
         <activity
             android:name=".Todos"
             android:label="@string/title_activity_todos" />
-        <activity android:name=".Detalle"></activity>
+        <activity android:name=".Detalle" />
+        <activity
+            android:name=".Mapas.MapsHoteles"
+            android:label="@string/title_activity_maps_hoteles" />
+        <activity
+            android:name=".Mapas.MapsRestaurantes"
+            android:label="@string/title_activity_maps_restaurantes" />
+        <activity
+            android:name=".Mapas.MapsSitios"
+            android:label="@string/title_activity_maps_sitios"></activity>
     </application>
 
 </manifest>

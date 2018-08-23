@@ -4,27 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/inicioa"
+    android:background="@drawable/inicioland"
     tools:context=".fragmets.InicioFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="278dp"
-        android:layout_height="135dp"
+        android:layout_width="361dp"
+        android:layout_height="61dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/asd"
         android:textAlignment="viewStart"
-        android:textColor="@color/verde"
+        android:textColor="@color/cafe"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

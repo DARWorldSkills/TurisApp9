@@ -16,6 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.aprendiz.ragp.turisapp9.fragmets.HotelesFragment;
+import com.aprendiz.ragp.turisapp9.fragmets.InicioFragment;
+import com.aprendiz.ragp.turisapp9.fragmets.RestaurantesFragment;
+import com.aprendiz.ragp.turisapp9.fragmets.SitiosFragment;
 import com.aprendiz.ragp.turisapp9.models.Lugares;
 
 public class MenuT extends AppCompatActivity
@@ -84,13 +87,30 @@ public class MenuT extends AppCompatActivity
 
         if (id == R.id.nav_inicio) {
             // Handle the camera action
+            fragment = new InicioFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+
+            getSupportActionBar().setTitle("Inicio");
+
         } else if (id == R.id.nav_hoteles) {
             fragment = new HotelesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+
+            getSupportActionBar().setTitle("Hoteles");
             
         } else if (id == R.id.nav_restaurantes) {
 
+            fragment = new RestaurantesFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+
+            getSupportActionBar().setTitle("Restaurantes");
+
         } else if (id == R.id.nav_sitios) {
+
+            fragment = new SitiosFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+
+            getSupportActionBar().setTitle("Sitios");
 
         }
 
