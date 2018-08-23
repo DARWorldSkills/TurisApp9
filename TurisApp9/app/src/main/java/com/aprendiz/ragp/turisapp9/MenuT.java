@@ -19,7 +19,9 @@ import com.aprendiz.ragp.turisapp9.fragmets.HotelesFragment;
 import com.aprendiz.ragp.turisapp9.fragmets.InicioFragment;
 import com.aprendiz.ragp.turisapp9.fragmets.RestaurantesFragment;
 import com.aprendiz.ragp.turisapp9.fragmets.SitiosFragment;
+import com.aprendiz.ragp.turisapp9.models.Constans;
 import com.aprendiz.ragp.turisapp9.models.Lugares;
+import com.google.android.gms.dynamic.IFragmentWrapper;
 
 public class MenuT extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +46,14 @@ public class MenuT extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
         navigationView.setItemTextColor(ColorStateList.valueOf(getColor(R.color.cafe)));
+        getSupportActionBar().setTitle(Constans.nombre);
+
+        if (Constans.inicio==0){
+            Constans.inicio=1;
+            Fragment fragment = new InicioFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+        }
+
     }
 
     @Override
@@ -89,28 +99,28 @@ public class MenuT extends AppCompatActivity
             // Handle the camera action
             fragment = new InicioFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
-
-            getSupportActionBar().setTitle("Inicio");
+            Constans.nombre="Inicio";
+            getSupportActionBar().setTitle(Constans.nombre);
 
         } else if (id == R.id.nav_hoteles) {
             fragment = new HotelesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
-
-            getSupportActionBar().setTitle("Hoteles");
+            Constans.nombre="Hoteles";
+            getSupportActionBar().setTitle(Constans.nombre);
 
         } else if (id == R.id.nav_restaurantes) {
 
             fragment = new RestaurantesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
-
-            getSupportActionBar().setTitle("Restaurantes");
+            Constans.nombre="Restaurantes";
+            getSupportActionBar().setTitle(Constans.nombre);
 
         } else if (id == R.id.nav_sitios) {
 
             fragment = new SitiosFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
-
-            getSupportActionBar().setTitle("Sitios");
+            Constans.nombre="Sitios";
+            getSupportActionBar().setTitle(Constans.nombre);
 
         }
 
@@ -118,4 +128,6 @@ public class MenuT extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

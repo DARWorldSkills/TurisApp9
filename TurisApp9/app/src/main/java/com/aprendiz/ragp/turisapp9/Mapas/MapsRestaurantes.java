@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.aprendiz.ragp.turisapp9.R;
+import com.aprendiz.ragp.turisapp9.models.Lugares;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -11,10 +12,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapsRestaurantes extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    public  static List<Lugares> lugaresList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +44,12 @@ public class MapsRestaurantes extends FragmentActivity implements OnMapReadyCall
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        for (int i=0; i<lugaresList.size();i++){
+            Lugares lugares = lugaresList.get(i);
+            LatLng latLng = new LatLng(lugares.getLatitud(), lugares.getLongitud());
+            mMap.addMarker(new MarkerOptions().position(latLng).title(lugares.getNombre()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+        }
     }
 }
