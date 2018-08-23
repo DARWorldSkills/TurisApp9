@@ -3,6 +3,7 @@ package com.aprendiz.ragp.turisapp9.fragmets;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aprendiz.ragp.turisapp9.Detalle;
+import com.aprendiz.ragp.turisapp9.Mapas.MapsRestaurantes;
 import com.aprendiz.ragp.turisapp9.MenuT;
 import com.aprendiz.ragp.turisapp9.R;
 import com.aprendiz.ragp.turisapp9.Splash;
@@ -33,7 +35,8 @@ public class SitiosFragment extends Fragment {
     int position;
     int modo=1;
     int item;
-
+    FloatingActionButton btnLugares;
+    List<Lugares> lugaresList;
     public SitiosFragment() {
         // Required empty public constructor
     }
@@ -45,6 +48,15 @@ public class SitiosFragment extends Fragment {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_sitios, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
+        btnLugares = view.findViewById(R.id.btnLugares);
+        btnLugares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MapsRestaurantes.lugaresList=lugaresList;
+                Intent intent = new Intent(getContext(),MapsRestaurantes.class);
+                startActivity(intent);
+            }
+        });
         inputAdaper();
         return view;
     }
@@ -52,7 +64,7 @@ public class SitiosFragment extends Fragment {
     private void inputAdaper() {
         position = getActivity().getWindowManager().getDefaultDisplay().getRotation();
         AdapterT adapterT;
-        final List<Lugares> lugaresList = Splash.lugaresList.subList(0,9);
+        lugaresList = Splash.lugaresList.subList(0,9);
         if (position== Surface.ROTATION_0 || position == Surface.ROTATION_180){
             if (modo==1){
                 item = R.layout.item_list;
