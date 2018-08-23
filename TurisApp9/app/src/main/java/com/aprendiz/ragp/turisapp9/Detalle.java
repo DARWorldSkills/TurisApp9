@@ -1,7 +1,10 @@
 package com.aprendiz.ragp.turisapp9;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +14,7 @@ import com.bumptech.glide.Glide;
 public class Detalle extends AppCompatActivity {
     Lugares lugares;
     TextView txtNombre, txtDescripcion;
+    FloatingActionButton btnDetalle;
     ImageView imgDetalle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +22,22 @@ public class Detalle extends AppCompatActivity {
         setContentView(R.layout.activity_detalle);
         inizialite();
         inputData();
+        btnDetalle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+                Intent intent = new Intent(Detalle.this, Todos.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void inizialite() {
         txtNombre = findViewById(R.id.txtNombreDetalle);
         txtDescripcion = findViewById(R.id.txtDescripcionDetalle);
         imgDetalle = findViewById(R.id.imgDetalle);
+        btnDetalle = findViewById(R.id.btnDetalle);
     }
 
     private void inputData() {
