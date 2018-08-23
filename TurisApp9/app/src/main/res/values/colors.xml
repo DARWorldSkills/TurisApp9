@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#87B148</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="transparente">#9e525252</color>
+
+
+
+
+
+
+
+
+
+
+
+
+    <color name="cafe">#6B4605</color>
+    <color name="fondo">#F5FCE0</color>
+    <color name="verde">#307F06</color>
 </resources>

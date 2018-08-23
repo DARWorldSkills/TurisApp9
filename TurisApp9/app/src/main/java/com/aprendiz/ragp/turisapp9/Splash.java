@@ -59,7 +59,6 @@ public class Splash extends AppCompatActivity {
 
             Type type = new TypeToken<List<Lugares>>(){}.getType();
             lugaresList = gson.fromJson(json,type);
-            Toast.makeText(this, "Bienvenido a TurisApp9", Toast.LENGTH_SHORT).show();
             TimerTask timerTask = new TimerTask() {
                 @Override
                 public void run() {
