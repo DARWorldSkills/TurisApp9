@@ -36,7 +36,7 @@
         android:layout_height="120dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/transparente1"
         app:contentPadding="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -45,15 +45,15 @@
             android:id="@+id/imgLand"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher_round" />
+            android:src="@drawable/inicioland" />
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:layout_width="350dp"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="0dp"
         app:cardElevation="10dp"
         app:contentPadding="4dp"
@@ -63,7 +63,9 @@
         <TextView
             android:id="@+id/txtDescripcionLand"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:text="@string/asd"
+            android:textColor="@color/cardview_light_background" />
 
     </android.support.v7.widget.CardView>
 
