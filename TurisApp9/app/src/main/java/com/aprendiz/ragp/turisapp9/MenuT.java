@@ -4,6 +4,7 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,9 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.aprendiz.ragp.turisapp9.fragmets.HotelesFragment;
+import com.aprendiz.ragp.turisapp9.models.Lugares;
+
 public class MenuT extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    //Declaración de variables
+    public static Lugares lugares = new Lugares() ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,12 +79,15 @@ public class MenuT extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        Fragment fragment;
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
             // Handle the camera action
         } else if (id == R.id.nav_hoteles) {
-
+            fragment = new HotelesFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+            
         } else if (id == R.id.nav_restaurantes) {
 
         } else if (id == R.id.nav_sitios) {

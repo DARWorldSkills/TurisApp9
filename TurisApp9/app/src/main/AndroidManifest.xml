@@ -41,7 +41,8 @@
 
         <activity
             android:name=".Todos"
-            android:label="@string/title_activity_todos"></activity>
+            android:label="@string/title_activity_todos" />
+        <activity android:name=".Detalle"></activity>
     </application>
 
 </manifest>
