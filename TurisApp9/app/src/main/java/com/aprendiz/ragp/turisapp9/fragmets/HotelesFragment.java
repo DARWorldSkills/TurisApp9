@@ -124,4 +124,6 @@ public class HotelesFragment extends Fragment {
         }
     }
 
+
+
 }
