@@ -97,7 +97,7 @@ public class MenuT extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
             getSupportActionBar().setTitle("Hoteles");
-            
+
         } else if (id == R.id.nav_restaurantes) {
 
             fragment = new RestaurantesFragment();
