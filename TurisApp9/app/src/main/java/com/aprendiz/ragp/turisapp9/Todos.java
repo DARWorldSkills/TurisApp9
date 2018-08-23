@@ -1,18 +1,38 @@
 package com.aprendiz.ragp.turisapp9;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.google.android.gms.dynamic.IFragmentWrapper;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Todos extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+
+    LocationManager locationManager;
+    Location location;
+
+    Marker marker;
+
+    double latitud = 0.0;
+    double longitud = 0.0;
+
+    final int MY_LOCATION = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +58,84 @@ public class Todos extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        miUbication();
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //LatLng sydney = new LatLng(-34, 151);
+        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
     }
+
+    private void miUbication() {
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) ActivityCompat.requestPermissions
+                (this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_LOCATION);
+        {
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
+                    (this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+
+        }
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        actualizarUbicacion(location);
+
+        locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 15000, 0, locationListener );
+    }
+
+
+}
+
+    private void actualizarUbicacion(Location location) {
+
+        if (location != null){
+            latitud = location.getLatitude();
+            longitud = location.getLongitude();
+            agregarMarcador(latitud, longitud);
+
+        }
+
+    }
+
+    private void agregarMarcador(double latitud, double longitud) {
+
+    LatLng marca = new LatLng(latitud, longitud);
+    CameraUpdate miubi = CameraUpdateFactory.newLatLngZoom(marca, 15);
+    if (marker != null){
+        marker = mMap.addMarker(new MarkerOptions().title("Estas Aquí").position(marca));
+        mMap.animateCamera(miubi);
+
+    }
+    }
+
+
+    LocationListener locationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            actualizarUbicacion(location);
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+    };
+
 }
